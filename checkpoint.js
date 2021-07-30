@@ -409,6 +409,23 @@ var binarySearch = function (array, target, min = 0, max = 0, flag = true) {
 
 var specialSort = function (array, orderFunction) {
   // Tu código aca:
+  let switcheo = true;
+  while (switcheo) {
+    switcheo = false;
+    for (let i = 1; i < array.length; i++) {
+      let currentData = array[i];
+      let trigger = orderFunction(array[i - 1], currentData);
+      if (trigger < 0) {
+        let anterior = array[i - 1];
+        array[i - 1] = currentData;
+        array[i] = anterior;
+        switcheo = true;
+      }
+    }
+  }
+
+  return array;
+  //O(N) = 3 + 6N
 };
 
 // ----- Closures -----
