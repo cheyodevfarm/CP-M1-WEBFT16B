@@ -425,7 +425,6 @@ var specialSort = function (array, orderFunction) {
   }
 
   return array;
-  //O(N) = 3 + 6N
 };
 
 // ----- Closures -----
@@ -458,6 +457,23 @@ var specialSort = function (array, orderFunction) {
 
 function closureDetect(symptoms, min) {
   // Tu código aca:
+  let sintomas = symptoms;
+  return function (persona) {
+    let cont = 0;
+    let sintoPer = persona.symptoms;
+    for (let i = 0; i < sintoPer.length; i++) {
+      for (let j = 0; j < sintomas.length; j++) {
+        if (sintoPer[i] === sintomas[j]) {
+          cont++;
+        }
+      }
+    }
+    if (cont >= min) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 }
 
 // -------------------
